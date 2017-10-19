@@ -25,6 +25,7 @@ certification_scheme_network_administrator = CertificationScheme.create(
   certification_fee: 1_450_000,
   description: 'Skema ini ditetapkan dengan tujuan untuk menghasilkan SDM Teknologi Informasi dan Komunikasi (TIK) yang kompeten di bidang Jaringan Komputer dan Sistem Administrasi. skema mengacu pada Standar Kompetensi Kerja Nasional Indonesia (SKKNI) Sektor Komunikasi dan Informasi Sub Sektor Telematika Bidang Jaringan Komputer dan Sistem Administrasi berdasarkan Keputusan Menteri Ketenagakerjaan Republik Indonesia Nomor 269 Tahun 2006 tanggal 10 Juli 2006.'
 )
+
 # Competency Unit
 CompetencyUnit.create(
   code: 'TIK.PR02.003.01',
