@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  enum gender: %i(male, female)
+  enum gender: %i[male female]
 end

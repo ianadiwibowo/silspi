@@ -1,0 +1,13 @@
+AllCops:
+  Excludes:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/schema.rb'
+Documentation:
+  Enabled: false
+Metrics/LineLength:
+  Enabled: false
+MethodLength:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
