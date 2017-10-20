@@ -14,14 +14,14 @@ CertificationScheme.destroy_all
 certification_scheme_programmer = CertificationScheme.create(
   code: 'FR.SKEMA-01',
   name: 'Programmer',
-  scheme_type: 'okupasi',
+  scheme_type: 'occupation',
   certification_fee: 1_200_000,
   description: 'Skema ini ditetapkan dengan tujuan untuk menghasilkan SDM Teknologi Informasi dan Komunikasi (TIK) yang kompeten di bidang Pemrograman Komputer. skema mengacu pada Standar Kompetensi Kerja Nasional Indonesia (SKKNI) Bidang Keahlian Programmer Komputer berdasarkan Keputusan Menteri Ketenagakerjaan Republik Indonesia Nomor 615 Tahun 2012 tanggal 27 September 2012.'
 )
 certification_scheme_network_administrator = CertificationScheme.create(
   code: 'FR.SKEMA-02',
   name: 'Network Administrator',
-  scheme_type: 'klaster',
+  scheme_type: 'cluster',
   certification_fee: 1_450_000,
   description: 'Skema ini ditetapkan dengan tujuan untuk menghasilkan SDM Teknologi Informasi dan Komunikasi (TIK) yang kompeten di bidang Jaringan Komputer dan Sistem Administrasi. skema mengacu pada Standar Kompetensi Kerja Nasional Indonesia (SKKNI) Sektor Komunikasi dan Informasi Sub Sektor Telematika Bidang Jaringan Komputer dan Sistem Administrasi berdasarkan Keputusan Menteri Ketenagakerjaan Republik Indonesia Nomor 269 Tahun 2006 tanggal 10 Juli 2006.'
 )

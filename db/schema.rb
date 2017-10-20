@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019120706) do
+ActiveRecord::Schema.define(version: 20171019141306) do
+
+  create_table "assessors", force: :cascade do |t|
+    t.string "license_number"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_assessors_on_user_id"
+  end
 
   create_table "certification_schemes", force: :cascade do |t|
     t.string "code"
@@ -30,6 +38,43 @@ ActiveRecord::Schema.define(version: 20171019120706) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["certification_scheme_id"], name: "index_competency_units_on_certification_scheme_id"
+  end
+
+  create_table "lsp_admins", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_lsp_admins_on_user_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "student_number"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_students_on_user_id"
+  end
+
+  create_table "technical_committees", force: :cascade do |t|
+    t.string "license_number"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_technical_committees_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "name"
+    t.string "password_hash"
+    t.string "profile_photo_path"
+    t.string "national_id_number"
+    t.integer "gender"
+    t.datetime "birthday"
+    t.text "address"
+    t.boolean "system_admin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
