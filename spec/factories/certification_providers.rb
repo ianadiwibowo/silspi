@@ -1,0 +1,5 @@
+FactoryGirl.define do
+  factory :certification_provider do
+    
+  end
+end
