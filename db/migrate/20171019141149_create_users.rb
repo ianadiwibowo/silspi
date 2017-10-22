@@ -10,6 +10,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.datetime :birthday
       t.text :address
       t.boolean :system_admin
+      t.string :email
+      t.string :phone
 
       t.timestamps
     end
