@@ -1,0 +1,2 @@
+class CertificationProvider < ApplicationRecord
+end
