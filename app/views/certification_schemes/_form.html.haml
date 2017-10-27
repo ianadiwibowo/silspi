@@ -1,0 +1,10 @@
+= form_for @certification_scheme do |f|
+  - if @certification_scheme.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@certification_scheme.errors.count, "error")} prohibited this certification_scheme from being saved:"
+      %ul
+        - @certification_scheme.errors.full_messages.each do |message|
+          %li= message
+
+  .actions
+    = f.submit 'Save'

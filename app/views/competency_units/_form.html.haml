@@ -1,0 +1,10 @@
+= form_for @competency_unit do |f|
+  - if @competency_unit.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@competency_unit.errors.count, "error")} prohibited this competency_unit from being saved:"
+      %ul
+        - @competency_unit.errors.full_messages.each do |message|
+          %li= message
+
+  .actions
+    = f.submit 'Save'

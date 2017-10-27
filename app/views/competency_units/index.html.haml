@@ -1,0 +1,19 @@
+%h1 Listing competency_units
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @competency_units.each do |competency_unit|
+      %tr
+        %td= link_to 'Show', competency_unit
+        %td= link_to 'Edit', edit_competency_unit_path(competency_unit)
+        %td= link_to 'Destroy', competency_unit, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Competency unit', new_competency_unit_path

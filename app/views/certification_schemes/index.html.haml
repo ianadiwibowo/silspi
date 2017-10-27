@@ -1,0 +1,19 @@
+%h1 Listing certification_schemes
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @certification_schemes.each do |certification_scheme|
+      %tr
+        %td= link_to 'Show', certification_scheme
+        %td= link_to 'Edit', edit_certification_scheme_path(certification_scheme)
+        %td= link_to 'Destroy', certification_scheme, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Certification scheme', new_certification_scheme_path
