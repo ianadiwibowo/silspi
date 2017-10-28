@@ -1,5 +1,5 @@
 class CertificationSchemesController < ApplicationController
-  before_action :set_certification_scheme, only: [:show, :edit, :update, :destroy]
+  before_action :set_certification_scheme, only: %i[show edit update destroy]
 
   # GET /certification_schemes
   # GET /certification_schemes.json
@@ -9,8 +9,7 @@ class CertificationSchemesController < ApplicationController
 
   # GET /certification_schemes/1
   # GET /certification_schemes/1.json
-  def show
-  end
+  def show; end
 
   # GET /certification_schemes/new
   def new
@@ -18,8 +17,7 @@ class CertificationSchemesController < ApplicationController
   end
 
   # GET /certification_schemes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /certification_schemes
   # POST /certification_schemes.json
@@ -62,13 +60,14 @@ class CertificationSchemesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_certification_scheme
-      @certification_scheme = CertificationScheme.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def certification_scheme_params
-      params.fetch(:certification_scheme, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_certification_scheme
+    @certification_scheme = CertificationScheme.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def certification_scheme_params
+    params.fetch(:certification_scheme, {})
+  end
 end
