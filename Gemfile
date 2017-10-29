@@ -39,3 +39,6 @@ gem 'paperclip'
 gem 'bootstrap', '~> 4.0.0.beta2'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
+gem 'devise'
+gem 'pundit'
+
