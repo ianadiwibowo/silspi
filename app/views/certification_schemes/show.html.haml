@@ -1,6 +1,55 @@
 %p#notice= notice
-
-
-= link_to 'Edit', edit_certification_scheme_path(@certification_scheme)
-\|
-= link_to 'Back', certification_schemes_path
+%div.container
+  %div.row
+    %div.col
+      = link_to certification_schemes_path, class: 'btn btn-outline-info', role: 'button' do
+        %i.fa.fa-arrow-left
+        Kembali ke Daftar Skema Sertifikasi
+      %div.card.mt-4.mb-4
+        %h5.card-header
+          = @certification_scheme.code
+          &mdash;
+          = @certification_scheme.name
+        %div.card-body
+          %p
+            = @certification_scheme.description
+          %p
+            %span.mr-3
+              %strong Tipe:
+              = @certification_scheme.scheme_type.capitalize
+            %span
+              %strong Biaya Sertifikasi:
+              Rp
+              = number_with_precision(@certification_scheme.certification_fee, precision: 0, delimiter: '.')
+          %div.btn-group{role: 'group', 'aria-label': 'Actions'}
+            = link_to edit_certification_scheme_path(@certification_scheme), class: 'btn btn-info', role: 'button' do
+              %i.fa.fa-pencil
+              Ubah
+            = link_to @certification_scheme, method: :delete, class: 'btn btn-danger', role: 'button', data: { confirm: 'Anda yakin ingin menghapus Skema Sertifikasi ini?' } do
+              %i.fa.fa-trash
+              Hapus
+      %div.card.mt-4.mb-4
+        %h5.card-header
+          Unit Kompetensi yang diujikan untuk
+          = @certification_scheme.code
+          &mdash;
+          = @certification_scheme.name
+        %div.card-body
+          = link_to new_competency_unit_path, class: 'btn btn-primary', role: 'button' do
+            %i.fa.fa-plus-circle
+            Tambah Unit Kompetensi Baru
+          %table.table.mt-3
+            %tbody
+              - @certification_scheme.competency_units.each_with_index do |competency_unit, index|
+                %tr.border-0
+                  %th.border-0{scope: 'row'}= "#{index + 1}."
+                  %td.border-0= competency_unit.code
+                  %td.border-0= competency_unit.name
+                  %td.border-0
+                    %div.btn-group{role: 'group', 'aria-label': 'Actions'}
+                      = link_to edit_competency_unit_path(competency_unit), class: 'btn btn-info', role: 'button' do
+                        %i.fa.fa-pencil
+                        Ubah
+                      = link_to competency_unit, method: :delete, class: 'btn btn-danger', role: 'button', data: { confirm: 'Anda yakin ingin menghapus Unit Kompetensi ini?' } do
+                        %i.fa.fa-trash
+                        Hapus
