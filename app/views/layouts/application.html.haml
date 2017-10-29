@@ -1,0 +1,11 @@
+!!! 5
+%html
+  %head
+    %title LSP Informatika
+    = csrf_meta_tags
+    = favicon_link_tag 'favicon.png'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %meta{name: 'viewport', content: 'width=device-width', 'initial-scale': 1, 'shrink-to-fit': 'no'}
+  %body
+    = yield
