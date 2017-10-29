@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :technical_committee do
     
   end

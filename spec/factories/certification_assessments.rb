@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :certification_assessment do
     
   end
