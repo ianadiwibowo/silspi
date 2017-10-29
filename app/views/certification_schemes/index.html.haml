@@ -1,39 +1,34 @@
 %div.container
   %div.row
     %div.col
-      %h1.mb-4 Daftar Skema Sertifikasi
+      %h2.mb-4 Daftar Skema Sertifikasi
       = link_to new_certification_scheme_path, class: 'btn btn-primary', role: 'button' do
         %i.fa.fa-plus-circle
         Tambah Skema Sertifikasi Baru
       - @certification_schemes.each do |certification_scheme|
         %div.card.mt-4.mb-4
-          %h4.card-header
+          %h5.card-header
+            = certification_scheme.code
+            &mdash;
             = certification_scheme.name
           %div.card-body
             %p
               = certification_scheme.description
-            %p.small
-              %span.mr-2
-                %strong Kode:
-                = certification_scheme.code
-              %span.mr-2
+            %p
+              %span.mr-3
                 %strong Tipe:
                 = certification_scheme.scheme_type.capitalize
+              %span.mr-3
+                %strong Biaya Sertifikasi:
+                Rp
+                = number_with_precision(certification_scheme.certification_fee, precision: 0, delimiter: '.')
               %span
                 %strong Unit Kompetensi:
                 = certification_scheme.competency_units.count
                 unit
-              -# %span
-              -#   %strong Dibuat Tanggal:
-              -#   = certification_scheme.created_at.in_time_zone('Jakarta').strftime("%e %b %Y %H:%M")
-              -#   WIB
-              -# %span
-              -#   %strong Diperbarui Terakhir Tanggal:
-              -#   = certification_scheme.updated_at.in_time_zone('Jakarta').strftime("%e %b %Y %H:%M")
-              -#   WIB
             %div.btn-group{role: 'group', 'aria-label': 'Actions'}
               = link_to certification_scheme, class: 'btn btn-primary', role: 'button' do
-                %i.fa.fa-eye
+                %i.fa.fa-search
                 Lihat Detail
               = link_to edit_certification_scheme_path(certification_scheme), class: 'btn btn-info', role: 'button' do
                 %i.fa.fa-pencil

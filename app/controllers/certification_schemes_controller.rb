@@ -1,10 +1,11 @@
 class CertificationSchemesController < ApplicationController
-  before_action :set_certification_scheme, only: %i[show edit update destroy]
+  before_action :set_certification_scheme, only: %i[edit update destroy]
+  before_action :set_certification_scheme_with_competency_units, only: %i[show]
 
   # GET /certification_schemes
   # GET /certification_schemes.json
   def index
-    @certification_schemes = CertificationScheme.all
+    @certification_schemes = CertificationScheme.order(:code)
   end
 
   # GET /certification_schemes/1
@@ -64,6 +65,10 @@ class CertificationSchemesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_certification_scheme
     @certification_scheme = CertificationScheme.find(params[:id])
+  end
+
+  def set_certification_scheme_with_competency_units
+    @certification_scheme = CertificationScheme.includes(:competency_units).find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
