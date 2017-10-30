@@ -1,3 +1,4 @@
+
 = form_for @certification_scheme do |f|
   - if @certification_scheme.errors.any?
     #error_explanation
@@ -5,6 +6,43 @@
       %ul
         - @certification_scheme.errors.full_messages.each do |message|
           %li= message
-
-  .actions
-    = f.submit 'Save'
+  %div.form-group.row
+    %div.col-sm-4
+      = f.label :code, 'Kode', class: 'col-form-label'
+      %p.form-text.small.text-muted
+        Kode unik, cth. 'FR.SKEMA-01' atau 'FR.SKEMA-02'
+    %div.col-sm-8
+      = f.text_field :code, class: 'form-control'
+  %div.form-group.row
+    %div.col-sm-4
+      = f.label :name, 'Nama', class: 'col-form-label'
+      %p.form-text.small.text-muted
+        Nama unik, cth. 'Programmer' atau 'Network Administrator'
+    %div.col-sm-8
+      = f.text_field :name, class: 'form-control'
+  %div.form-group.row
+    %div.col-sm-4
+      = f.label :scheme_type, 'Tipe', class: 'col-form-label'
+    %div.col-sm-8
+      = f.select :scheme_type, CertificationScheme.scheme_types.keys.map { |x| [x.humanize, x] }, {}, class: 'form-control'
+  %div.form-group.row
+    %div.col-sm-4
+      = f.label :certification_fee, 'Biaya Sertifikasi', class: 'col-form-label'
+      %p.form-text.small.text-muted
+        Jumlah yang harus dibayarkan peserta, cth. '1250000' atau '1,250,000'
+    %div.col-sm-8
+      %div.input-group
+        %div.input-group-addon Rp
+        = f.text_field :certification_fee, class: 'form-control'
+  %div.form-group.row
+    %div.col-sm-4
+      = f.label :description, 'Deskripsi', class: 'col-form-label'
+      %p.form-text.small.text-muted
+        Keterangan singkat mengenai Skema Sertifikasi ini
+    %div.col-sm-8
+      = f.text_area :description, class: 'form-control'
+  %div.form-group.row
+    %div.col-sm-12
+      = button_tag type: 'submit', class: 'btn btn-primary' do
+        %i.fa.fa-save
+        Simpan

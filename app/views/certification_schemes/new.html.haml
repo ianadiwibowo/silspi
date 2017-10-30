@@ -1,5 +1,11 @@
-%h1 New certification_scheme
-
-= render 'form'
-
-= link_to 'Back', certification_schemes_path
+%p#notice= notice
+%div.container
+  %div.row
+    %div.col
+      = link_to certification_schemes_path, class: 'btn btn-outline-info', role: 'button' do
+        %i.fa.fa-arrow-left
+        Kembali ke Daftar Skema Sertifikasi
+      %div.card.mt-4.mb-4
+        %h5.card-header Tambah Skema Sertifikasi Baru
+        %div.card-body
+          = render 'form'
