@@ -34,7 +34,6 @@ end
 
 gem 'rubocop', '~> 0.51.0', require: false
 gem 'haml-rails'
-gem 'simple_form'
 gem 'paperclip'
 gem 'bootstrap', '~> 4.0.0.beta2'
 gem 'jquery-rails'
