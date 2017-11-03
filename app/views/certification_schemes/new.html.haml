@@ -1,11 +1,14 @@
-%p#notice= notice
-%div.container
-  %div.row
-    %div.col
+.alert.alert-success.alert-dismissible.fade.show#notice{role: 'alert'}
+  .text-center= notice
+  %button{type: 'button', class: 'close', 'data-dismiss': 'alert', 'aria-label': 'Close'}
+    %span{'aria-hidden': 'true'} &times;
+.container
+  .row
+    .col
       = link_to certification_schemes_path, class: 'btn btn-outline-info', role: 'button' do
         %i.fa.fa-arrow-left
         Kembali ke Daftar Skema Sertifikasi
-      %div.card.mt-4.mb-4
+      .card.mt-4.mb-4
         %h5.card-header Tambah Skema Sertifikasi Baru
-        %div.card-body
+        .card-body
           = render 'form'
