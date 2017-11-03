@@ -5,5 +5,5 @@ class CertificationScheme < ApplicationRecord
 
   validates :code, :name, :scheme_type, :certification_fee, :description, presence: true
   validates :code, :name, uniqueness: true
-  validates :certification_fee, numericality: { greater_than_or_equal_to: 0 }
+  validates :certification_fee, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
 end

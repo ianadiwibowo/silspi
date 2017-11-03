@@ -73,6 +73,6 @@ class CertificationSchemesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def certification_scheme_params
-    params.fetch(:certification_scheme, {})
+    params.fetch(:certification_scheme, {}).permit(:code, :name, :scheme_type, :certification_fee, :description)
   end
 end
