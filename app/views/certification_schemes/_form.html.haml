@@ -2,8 +2,8 @@
 = form_for @certification_scheme do |f|
   - if @certification_scheme.errors.any?
     .alert.alert-danger
-      %h2= "#{pluralize(@certification_scheme.errors.count, "error")} prohibited this certification_scheme from being saved:"
-      %ul
+      %h6= "#{pluralize(@certification_scheme.errors.count, "error")} prohibited this certification_scheme from being saved:"
+      %ul.mb-0
         - @certification_scheme.errors.full_messages.each do |message|
           %li= message
   .form-group.row
@@ -13,8 +13,8 @@
         Kode unik, cth. 'FR.SKEMA-01' atau 'FR.SKEMA-02'
     .col-sm-8
       = f.text_field :code, class: 'form-control'
-    .col-sm-1.small.text-danger
-      * Required
+    .col-sm-1.text-danger
+      *
   .form-group.row
     .col-sm-3
       = f.label :name, 'Nama', class: 'col-form-label'
@@ -22,15 +22,15 @@
         Nama unik, cth. 'Programmer' atau 'Network Administrator'
     .col-sm-8
       = f.text_field :name, class: 'form-control'
-    .col-sm-1.small.text-danger
-      * Required
+    .col-sm-1.text-danger
+      *
   .form-group.row
     .col-sm-3
       = f.label :scheme_type, 'Tipe', class: 'col-form-label'
     .col-sm-8
       = f.select :scheme_type, CertificationScheme.scheme_types.keys.map { |x| [x.humanize, x] }, {}, class: 'form-control'
-    .col-sm-1.small.text-danger
-      * Required
+    .col-sm-1.text-danger
+      *
   .form-group.row
     .col-sm-3
       = f.label :certification_fee, 'Biaya Sertifikasi', class: 'col-form-label'
@@ -38,9 +38,10 @@
         Jumlah yang harus dibayarkan peserta, cth. '1250000' atau '1,250,000'
     .col-sm-8
       .input-group
-        .input-group-addon Rp
+        %span.input-group-addon Rp
         = f.text_field :certification_fee, class: 'form-control'
-    .col-sm-2
+    .col-sm-1.text-danger
+      *
   .form-group.row
     .col-sm-3
       = f.label :description, 'Deskripsi', class: 'col-form-label'
@@ -48,8 +49,8 @@
         Keterangan singkat mengenai Skema Sertifikasi ini
     .col-sm-8
       = f.text_area :description, class: 'form-control'
-    .col-sm-1.small.text-danger
-      * Required
+    .col-sm-1.text-danger
+      *
   .form-group.row
     .col-sm-12
       = button_tag type: 'submit', class: 'btn btn-primary', style: 'cursor: pointer' do
