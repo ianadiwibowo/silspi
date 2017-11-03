@@ -1,16 +1,19 @@
-%p#notice= notice
-%div.container
-  %div.row
-    %div.col
+.alert.alert-success.alert-dismissible.fade.show#notice{role: 'alert'}
+  .text-center= notice
+  %button{type: 'button', class: 'close', 'data-dismiss': 'alert', 'aria-label': 'Close'}
+    %span{'aria-hidden': 'true'} &times;
+.container
+  .row
+    .col
       = link_to certification_schemes_path, class: 'btn btn-outline-info', role: 'button' do
         %i.fa.fa-arrow-left
         Kembali ke Daftar Skema Sertifikasi
-      %div.card.mt-4.mb-4
+      .card.mt-4.mb-4
         %h5.card-header
           = @certification_scheme.code
           &mdash;
           = @certification_scheme.name
-        %div.card-body
+        .card-body
           %p
             = @certification_scheme.description
           %p
@@ -21,20 +24,20 @@
               %strong Biaya Sertifikasi:
               Rp
               = number_with_precision(@certification_scheme.certification_fee, precision: 0, delimiter: '.')
-          %div.btn-group{role: 'group', 'aria-label': 'Actions'}
+          .btn-group{role: 'group', 'aria-label': 'Actions'}
             = link_to edit_certification_scheme_path(@certification_scheme), class: 'btn btn-info', role: 'button' do
               %i.fa.fa-pencil
               Ubah
             = link_to @certification_scheme, method: :delete, class: 'btn btn-danger', role: 'button', data: { confirm: 'Anda yakin ingin menghapus Skema Sertifikasi ini?' } do
               %i.fa.fa-trash
               Hapus
-      %div.card.mt-4.mb-4
+      .card.mt-4.mb-4
         %h5.card-header
           Unit Kompetensi yang diujikan untuk
           = @certification_scheme.code
           &mdash;
           = @certification_scheme.name
-        %div.card-body
+        .card-body
           = link_to new_competency_unit_path, class: 'btn btn-primary', role: 'button' do
             %i.fa.fa-plus-circle
             Tambah Unit Kompetensi Baru
@@ -46,7 +49,7 @@
                   %td.border-0= competency_unit.code
                   %td.border-0= competency_unit.name
                   %td.border-0
-                    %div.btn-group{role: 'group', 'aria-label': 'Actions'}
+                    .btn-group{role: 'group', 'aria-label': 'Actions'}
                       = link_to edit_competency_unit_path(competency_unit), class: 'btn btn-info', role: 'button' do
                         %i.fa.fa-pencil
                         Ubah

@@ -1,17 +1,17 @@
-%div.container
-  %div.row
-    %div.col
+.container
+  .row
+    .col
       %h2.mb-4 Daftar Skema Sertifikasi
       = link_to new_certification_scheme_path, class: 'btn btn-primary', role: 'button' do
         %i.fa.fa-plus-circle
         Tambah Skema Sertifikasi Baru
       - @certification_schemes.each do |certification_scheme|
-        %div.card.mt-4.mb-4
+        .card.mt-4.mb-4
           %h5.card-header
             = certification_scheme.code
             &mdash;
             = certification_scheme.name
-          %div.card-body
+          .card-body
             %p
               = certification_scheme.description
             %p
@@ -26,7 +26,7 @@
                 %strong Unit Kompetensi:
                 = certification_scheme.competency_units.count
                 unit
-            %div.btn-group{role: 'group', 'aria-label': 'Actions'}
+            .btn-group{role: 'group', 'aria-label': 'Actions'}
               = link_to certification_scheme, class: 'btn btn-primary', role: 'button' do
                 %i.fa.fa-search
                 Lihat Detail
