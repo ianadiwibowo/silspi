@@ -1,5 +1,13 @@
-%h1 New competency_unit
-
-= render 'form'
-
-= link_to 'Back', competency_units_path
+- unless notice.blank?
+  .alert.alert-success#notice{role: 'alert'}
+    .text-center= notice
+.container
+  .row
+    .col
+      = link_to certification_scheme_path(params[:certification_scheme_id]), class: 'btn btn-outline-info', role: 'button' do
+        %i.fa.fa-arrow-left
+        Kembali ke Skema Sertifikasi
+      .card.mt-4.mb-4
+        %h5.card-header Tambah Unit Kompetensi Baru
+        .card-body
+          = render 'form'
