@@ -1,10 +1,39 @@
-= form_for @competency_unit do |f|
+= form_for [:certification_scheme, @competency_unit] do |f|
   - if @competency_unit.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@competency_unit.errors.count, "error")} prohibited this competency_unit from being saved:"
-      %ul
+    .alert.alert-danger
+      %h6= "#{pluralize(@competency_unit.errors.count, "error")} prohibited this competency_unit from being saved:"
+      %ul.mb-0
         - @competency_unit.errors.full_messages.each do |message|
           %li= message
-
-  .actions
-    = f.submit 'Save'
+  .form-group.row
+    .col-sm-3
+      = f.label :certification_scheme_id, 'Skema Sertifikasi', class: 'col-form-label'
+    .col-sm-8
+      = f.hidden_field :certification_scheme_id, value: @certification_scheme.id
+      %p.col-form-label
+        = @certification_scheme.code
+        &mdash;
+        = @certification_scheme.name
+  .form-group.row
+    .col-sm-3
+      = f.label :code, 'Kode', class: 'col-form-label'
+      %p.form-text.small.text-muted
+        Kode unik, cth. 'TIK.PR02.004.01' atau 'TIK.JK02.015.01	'
+    .col-sm-8
+      = f.text_field :code, class: 'form-control'
+    .col-sm-1.text-danger
+      *
+  .form-group.row
+    .col-sm-3
+      = f.label :name, 'Nama', class: 'col-form-label'
+      %p.form-text.small.text-muted
+        Deskripsi singkat, cth. 'Membuat dokumen kode program' atau 'Mendisain sistem keamanan jaringan'
+    .col-sm-8
+      = f.text_field :name, class: 'form-control'
+    .col-sm-1.text-danger
+      *
+  .form-group.row
+    .col-sm-12
+      = button_tag type: 'submit', class: 'btn btn-primary', style: 'cursor: pointer' do
+        %i.fa.fa-save
+        Simpan Unit Kompetensi
