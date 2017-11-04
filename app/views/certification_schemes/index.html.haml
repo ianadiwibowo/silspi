@@ -1,3 +1,6 @@
+- unless notice.blank?
+  .alert.alert-success#notice{role: 'alert'}
+    .text-center= notice
 .container
   .row
     .col
@@ -5,34 +8,44 @@
       = link_to new_certification_scheme_path, class: 'btn btn-primary', role: 'button' do
         %i.fa.fa-plus-circle
         Tambah Skema Sertifikasi Baru
-      - @certification_schemes.each do |certification_scheme|
+      - if @certification_schemes.blank?
         .card.mt-4.mb-4
           %h5.card-header
-            = certification_scheme.code
-            &mdash;
-            = certification_scheme.name
+            Belum ada Skema Sertifikasi
           .card-body
             %p
-              = certification_scheme.description
-            %p
-              %span.mr-3
-                %strong Tipe:
-                = certification_scheme.scheme_type.capitalize
-              %span.mr-3
-                %strong Biaya Sertifikasi:
-                Rp
-                = number_with_precision(certification_scheme.certification_fee, precision: 0, delimiter: '.')
-              %span
-                %strong Unit Kompetensi:
-                = certification_scheme.competency_units.count
-                unit
-            .btn-group{role: 'group', 'aria-label': 'Actions'}
-              = link_to certification_scheme, class: 'btn btn-primary', role: 'button' do
-                %i.fa.fa-search
-                Lihat Detail
-              = link_to edit_certification_scheme_path(certification_scheme), class: 'btn btn-info', role: 'button' do
-                %i.fa.fa-pencil
-                Ubah
-              = link_to certification_scheme, method: :delete, class: 'btn btn-danger', role: 'button', data: { confirm: 'Anda yakin ingin menghapus Skema Sertifikasi ini?' } do
-                %i.fa.fa-trash
-                Hapus
+              Silahkan buat Skema Sertifikasi baru dengan mengeklik tombol
+              %kbd Tambah Skema Sertifikasi Baru
+              di atas.
+      - else
+        - @certification_schemes.each do |certification_scheme|
+          .card.mt-4.mb-4
+            %h5.card-header
+              = certification_scheme.code
+              &mdash;
+              = certification_scheme.name
+            .card-body
+              %p
+                = certification_scheme.description
+              %p
+                %span.mr-3
+                  %strong Tipe:
+                  = certification_scheme.scheme_type.capitalize
+                %span.mr-3
+                  %strong Biaya Sertifikasi:
+                  Rp
+                  = number_with_precision(certification_scheme.certification_fee, precision: 0, delimiter: '.')
+                %span
+                  %strong Unit Kompetensi:
+                  = certification_scheme.competency_units.count
+                  unit
+              .btn-group{role: 'group', 'aria-label': 'Actions'}
+                = link_to certification_scheme, class: 'btn btn-primary', role: 'button' do
+                  %i.fa.fa-search
+                  Lihat Detail
+                = link_to edit_certification_scheme_path(certification_scheme), class: 'btn btn-info', role: 'button' do
+                  %i.fa.fa-pencil
+                  Ubah
+                = link_to certification_scheme, method: :delete, class: 'btn btn-danger', role: 'button', data: { confirm: 'Anda yakin ingin menghapus Skema Sertifikasi ini?' } do
+                  %i.fa.fa-trash
+                  Hapus
