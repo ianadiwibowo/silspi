@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :certification_providers
   resources :certification_schemes do
     resources :competency_units
   end
