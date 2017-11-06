@@ -8,6 +8,7 @@ end
 gem 'bootstrap', '~> 4.0.0.beta2'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
+gem 'dotenv', '~> 2.1'
 gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.5'
