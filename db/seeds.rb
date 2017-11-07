@@ -9,6 +9,7 @@
 # Reset
 CompetencyUnit.destroy_all
 CertificationScheme.destroy_all
+CertificationProvider.destroy_all
 
 # Certification Scheme
 certification_scheme_programmer = CertificationScheme.create(
@@ -116,4 +117,16 @@ CompetencyUnit.create(
   name: 'Memonitor dan mengadministrasi keamanan jaringan',
   certification_scheme: certification_scheme_network_administrator,
   display_order: 7
+)
+
+# Certification Providers
+CertificationProvider.create(
+  name: 'TUK Nurul Fikri Depok',
+  legal_entity_name: 'PT. Nurul Fikri Indonesia',
+  profile_photo: 'nurul-fikri-depok.jpg',
+  address: 'Jl. Raya Lenteng Agung No. 21, Srengsengsawa, Jagakarsa, Jakarta Selatan',
+  postal_code: '14544',
+  city: 'Jakarta',
+  latitude: 5,
+  longitude: 6
 )
