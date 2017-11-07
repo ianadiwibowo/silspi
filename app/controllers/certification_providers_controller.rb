@@ -4,7 +4,7 @@ class CertificationProvidersController < ApplicationController
   # GET /certification_providers
   # GET /certification_providers.json
   def index
-    @certification_providers = CertificationProvider.all
+    @certification_providers = CertificationProvider.order(:name)
   end
 
   # GET /certification_providers/1
@@ -69,6 +69,6 @@ class CertificationProvidersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def certification_provider_params
-      params.fetch(:certification_provider, {})
+      params.fetch(:certification_provider, {}).permit(:name, :legal_entity_name, :profile_photo, :address, :postal_code, :city, :latitude, :longitude)
     end
 end
