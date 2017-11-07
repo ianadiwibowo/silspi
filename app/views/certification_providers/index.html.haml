@@ -1,19 +1,43 @@
-%h1 Listing certification_providers
-
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
-
-  %tbody
-    - @certification_providers.each do |certification_provider|
-      %tr
-        %td= link_to 'Show', certification_provider
-        %td= link_to 'Edit', edit_certification_provider_path(certification_provider)
-        %td= link_to 'Destroy', certification_provider, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Certification provider', new_certification_provider_path
+- unless notice.blank?
+  .alert.alert-success#notice{role: 'alert'}
+    .text-center= notice
+.container
+  .row
+    .col
+      %h2.mb-4 Daftar Tempat Uji Kompetensi
+      = link_to new_certification_provider_path, class: 'btn btn-primary', role: 'button' do
+        %i.fa.fa-plus-circle
+        Tambah Tempat Uji Kompetensi Baru
+      - if @certification_providers.blank?
+        .card.mt-4.mb-4
+          %h5.card-header
+            Belum ada Tempat Uji Kompetensi
+          .card-body
+            %p
+              Silahkan buat Tempat Uji Kompetensi baru dengan mengeklik tombol
+              %kbd Tambah Tempat Uji Kompetensi Baru
+              di atas.
+      - else
+        - @certification_providers.each do |certification_provider|
+          .card.mt-4.mb-4
+            %h5.card-header
+              = certification_provider.name
+            .card-body
+              %p
+                = certification_provider.address
+                = certification_provider.postal_code
+                = certification_provider.city
+              %p
+                %span.mr-3
+                  %strong Nama Legal:
+                  = certification_provider.legal_entity_name
+              .btn-group{role: 'group', 'aria-label': 'Actions'}
+                = link_to certification_provider, class: 'btn btn-primary', role: 'button' do
+                  %i.fa.fa-search
+                  Lihat Detail
+                = link_to edit_certification_provider_path(certification_provider), class: 'btn btn-info', role: 'button' do
+                  %i.fa.fa-pencil
+                  Ubah
+                = link_to certification_provider, method: :delete, class: 'btn btn-danger', role: 'button', data: { confirm: 'Anda yakin ingin menghapus Tempat Uji Kompetensi ini?' } do
+                  %i.fa.fa-trash
+                  Hapus
