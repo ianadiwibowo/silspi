@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bootstrap', '~> 4.0.0.beta2'
+gem 'carrierwave', '~> 1.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'dotenv', '~> 2.1'
@@ -13,7 +14,6 @@ gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
-gem 'paperclip'
 gem 'puma', '~> 3.7'
 gem 'pundit'
 gem 'rails', '~> 5.1.4'
