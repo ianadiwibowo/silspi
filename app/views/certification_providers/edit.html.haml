@@ -1,7 +1,13 @@
-%h1 Editing certification_provider
-
-= render 'form'
-
-= link_to 'Show', @certification_provider
-\|
-= link_to 'Back', certification_providers_path
+- unless notice.blank?
+  .alert.alert-success#notice{role: 'alert'}
+    .text-center= notice
+.container
+  .row
+    .col
+      = link_to @certification_provider, class: 'btn btn-outline-info', role: 'button' do
+        %i.fa.fa-undo
+        Tidak Jadi Ubah
+      .card.mt-4.mb-4
+        %h5.card-header Ubah Tempat Uji Kompetensi
+        .card-body
+          = render 'form'

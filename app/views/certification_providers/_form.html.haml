@@ -1,7 +1,64 @@
-= simple_form_for(@certification_provider) do |f|
-  = f.error_notification
+= form_for(@certification_provider) do |f|
+  - if @certification_provider.errors.any?
+    .alert.alert-danger
+      %h6= "#{pluralize(@certification_provider.errors.count, "error")} prohibited this certification_provider from being saved:"
+      %ul.mb-0
+        - @certification_provider.errors.full_messages.each do |message|
+          %li= message
+  .form-group.row
+    .col-sm-3
+      = f.label :name, 'Nama', class: 'col-form-label'
+      %p.form-text.small.text-muted
+        Nama unik, cth. 'TUK Nurul Fikri Depok'
+    .col-sm-8
+      = f.text_field :name, class: 'form-control'
+    .col-sm-1.text-danger
+      *
+  .form-group.row
+    .col-sm-3
+      = f.label :profile_photo, 'Foto Gedung', class: 'col-form-label'
+      %p.form-text.small.text-muted
+        Unggah foto profil
+    .col-sm-8
+      .label.custom-file
+        = f.file_field :profile_photo, class: 'custom-file-input'
+        = f.hidden_field :profile_photo_cache
+        .span.custom-file-control
+  .form-group-row
+    .col-sm-3
+      &nbsp;
+    .col-sm-8
+      = image_tag @certification_provider.profile_photo_url, height: 300 if @certification_provider.profile_photo?
+  .form-group.row
+    .col-sm-3
+      = f.label :legal_entity_name, 'Nama Legal', class: 'col-form-label'
+      %p.form-text.small.text-muted
+        Nama resmi menurut akte pendirian, cth. 'PT. Nurul Fikri Indonesia'
+    .col-sm-8
+      = f.text_field :legal_entity_name, class: 'form-control'
+  .form-group.row
+    .col-sm-3
+      = f.label :address, 'Alamat', class: 'col-form-label'
+    .col-sm-8
+      = f.text_area :address, class: 'form-control', rows: 4
+    .col-sm-1.text-danger
+      *
+  .form-group.row
+    .col-sm-3
+      = f.label :postal_code, 'Kode Pos', class: 'col-form-label'
+    .col-sm-4
+      = f.text_field :postal_code, class: 'form-control'
+  .form-group.row
+    .col-sm-3
+      = f.label :city, 'Kota', class: 'col-form-label'
+    .col-sm-4
+      = f.select :city, ['Jakarta', 'Bali', 'Bekasi', 'Bogor', 'Depok'], {}, class: 'form-control'
 
-  .form-inputs
+    latitude
+    longitude
 
-  .form-actions
-    = f.button :submit
+  .form-group.row
+    .col-sm-12
+      = button_tag type: 'submit', class: 'btn btn-primary', style: 'cursor: pointer' do
+        %i.fa.fa-save
+        Simpan Tempat Uji Kompetensi

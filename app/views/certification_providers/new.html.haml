@@ -1,5 +1,13 @@
-%h1 New certification_provider
-
-= render 'form'
-
-= link_to 'Back', certification_providers_path
+- unless notice.blank?
+  .alert.alert-success#notice{role: 'alert'}
+    .text-center= notice
+.container
+  .row
+    .col
+      = link_to certification_providers_path, class: 'btn btn-outline-info', role: 'button' do
+        %i.fa.fa-arrow-left
+        Kembali ke Daftar Tempat Uji Kompetensi
+      .card.mt-4.mb-4
+        %h5.card-header Tambah Tempat Uji Kompetensi Baru
+        .card-body
+          = render 'form'
