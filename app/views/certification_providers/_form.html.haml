@@ -20,15 +20,13 @@
       %p.form-text.small.text-muted
         Unggah foto profil
     .col-sm-8
-      .label.custom-file
-        = f.file_field :profile_photo, class: 'custom-file-input'
-        = f.hidden_field :profile_photo_cache
-        .span.custom-file-control
-  .form-group-row
-    .col-sm-3
-      &nbsp;
-    .col-sm-8
-      = image_tag @certification_provider.profile_photo_url, height: 300 if @certification_provider.profile_photo?
+      -# .label.custom-file
+      = f.file_field :profile_photo, class: 'form-control-file'
+      -# = f.file_field :profile_photo, class: 'custom-file-input'
+      = f.hidden_field :profile_photo_cache
+      -# .span.custom-file-control
+  #uploaded_profile_photo
+    = render 'profile_photo'
   .form-group.row
     .col-sm-3
       = f.label :legal_entity_name, 'Nama Legal', class: 'col-form-label'
@@ -53,12 +51,17 @@
       = f.label :city, 'Kota', class: 'col-form-label'
     .col-sm-4
       = f.select :city, ['Jakarta', 'Bali', 'Bekasi', 'Bogor', 'Depok'], {}, class: 'form-control'
-
-    latitude
-    longitude
-
   .form-group.row
     .col-sm-12
       = button_tag type: 'submit', class: 'btn btn-primary', style: 'cursor: pointer' do
         %i.fa.fa-save
         Simpan Tempat Uji Kompetensi
+:javascript
+  $(document).ready(function() {
+    $('#certification_provider_profile_photo').on('change', function() {
+      // $.ajax({url: 'refresh_uploaded_profile_photo'});
+      var img = $('#certification_provider_profile_photo').prop('files')[0];
+      console.log(img) // DEBUG
+      $('#uploaded_profile_photo').html("<img src=" + img.name + ">");
+    });
+  });

@@ -1,5 +1,5 @@
 class CertificationProvidersController < ApplicationController
-  before_action :set_certification_provider, only: [:show, :edit, :update, :destroy]
+  before_action :set_certification_provider, only: %i[show edit update destroy]
 
   # GET /certification_providers
   # GET /certification_providers.json
@@ -9,8 +9,7 @@ class CertificationProvidersController < ApplicationController
 
   # GET /certification_providers/1
   # GET /certification_providers/1.json
-  def show
-  end
+  def show; end
 
   # GET /certification_providers/new
   def new
@@ -18,8 +17,7 @@ class CertificationProvidersController < ApplicationController
   end
 
   # GET /certification_providers/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /certification_providers
   # POST /certification_providers.json
@@ -61,14 +59,21 @@ class CertificationProvidersController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_certification_provider
-      @certification_provider = CertificationProvider.find(params[:id])
+  def refresh_uploaded_profile_photo
+    respond_to do |format|
+      format.js
     end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def certification_provider_params
-      params.fetch(:certification_provider, {}).permit(:name, :legal_entity_name, :profile_photo, :address, :postal_code, :city, :latitude, :longitude)
-    end
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_certification_provider
+    @certification_provider = CertificationProvider.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def certification_provider_params
+    params.fetch(:certification_provider, {}).permit(:name, :legal_entity_name, :profile_photo, :address, :postal_code, :city, :latitude, :longitude)
+  end
 end

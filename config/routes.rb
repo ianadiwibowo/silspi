@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/certification_providers/refresh_uploaded_profile_photo', to: 'certification_providers#refresh_uploaded_profile_photo'
   resources :certification_providers
   resources :certification_schemes do
     resources :competency_units

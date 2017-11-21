@@ -1,0 +1,6 @@
+- if @certification_provider&.profile_photo?
+  .form-group-row
+    .col-sm-3
+      &nbsp;
+    .col-sm-8
+      = image_tag @certification_provider.profile_photo_url, height: 300
