@@ -20,15 +20,8 @@
       %p.form-text.small.text-muted
         Unggah foto profil
     .col-sm-8
-      .label.custom-file
-        = f.file_field :profile_photo, class: 'custom-file-input'
-        = f.hidden_field :profile_photo_cache
-        .span.custom-file-control
-  .form-group-row
-    .col-sm-3
-      &nbsp;
-    .col-sm-8
-      = image_tag @certification_provider.profile_photo_url, height: 300 if @certification_provider.profile_photo?
+      = f.file_field :profile_photo, class: 'form-control-file'
+      = f.hidden_field :profile_photo_cache
   .form-group.row
     .col-sm-3
       = f.label :legal_entity_name, 'Nama Legal', class: 'col-form-label'
@@ -53,10 +46,6 @@
       = f.label :city, 'Kota', class: 'col-form-label'
     .col-sm-4
       = f.select :city, ['Jakarta', 'Bali', 'Bekasi', 'Bogor', 'Depok'], {}, class: 'form-control'
-
-    latitude
-    longitude
-
   .form-group.row
     .col-sm-12
       = button_tag type: 'submit', class: 'btn btn-primary', style: 'cursor: pointer' do
