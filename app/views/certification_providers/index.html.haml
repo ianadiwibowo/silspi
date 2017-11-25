@@ -25,7 +25,7 @@
             .card-body
               .row.mb-4
                 .col
-                  = image_tag certification_provider.profile_photo_url, class: 'rounded img-fluid mr-4', width: 250 if certification_provider.profile_photo?
+                  = image_tag certification_provider.profile_photo_url, class: 'rounded img-fluid mr-4 mb-4', width: 250 if certification_provider.profile_photo?
                   %p.d-inline-block.align-top
                     = certification_provider.address
                     %br
