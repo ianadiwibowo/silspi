@@ -1,6 +1,33 @@
-%p#notice= notice
-
-
-= link_to 'Edit', edit_certification_provider_path(@certification_provider)
-\|
-= link_to 'Back', certification_providers_path
+- unless notice.blank?
+  .alert.alert-success#notice{role: 'alert'}
+    .text-center= notice
+.container
+  .row
+    .col
+      = link_to certification_providers_path, class: 'btn btn-outline-info', role: 'button' do
+        %i.fa.fa-arrow-left
+        Kembali ke Daftar Tempat Uji Kompetensi
+      .card.mt-4.mb-4
+        %h5.card-header
+          = @certification_provider.name
+        .card-body
+          .row.mb-4
+            .col
+              = image_tag @certification_provider.profile_photo_url, class: 'rounded img-fluid mr-4', width: 250 if @certification_provider.profile_photo?
+              .d-inline-block.align-top
+                %p
+                  = @certification_provider.address
+                  %br
+                  = @certification_provider.postal_code + ', '
+                  = @certification_provider.city
+                %p
+                  %span.mr-3
+                    %strong Nama Legal:
+                    = @certification_provider.legal_entity_name
+          .btn-group{role: 'group', 'aria-label': 'Actions'}
+            = link_to edit_certification_provider_path(@certification_provider), class: 'btn btn-info', role: 'button' do
+              %i.fa.fa-pencil
+              Ubah
+            = link_to @certification_provider, method: :delete, class: 'btn btn-danger', role: 'button', data: { confirm: 'Anda yakin ingin menghapus Tempat Uji Kompetensi ini?' } do
+              %i.fa.fa-trash
+              Hapus
