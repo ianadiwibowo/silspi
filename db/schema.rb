@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20171022173325) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "assessors", force: :cascade do |t|
     t.string "license_number"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "idx_assessors_user"
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20171022173325) do
     t.string "serial_number"
     t.datetime "issue_date"
     t.datetime "expiration_date"
-    t.integer "certification_assessment_id"
+    t.bigint "certification_assessment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["certification_assessment_id"], name: "idx_certificates_certification_assessment"
@@ -34,11 +37,11 @@ ActiveRecord::Schema.define(version: 20171022173325) do
     t.datetime "schedule"
     t.integer "status"
     t.text "assessor_comment"
-    t.integer "student_id"
-    t.integer "certification_registration_id"
-    t.integer "certification_scheme_id"
-    t.integer "certification_provider_id"
-    t.integer "assessor_id"
+    t.bigint "student_id"
+    t.bigint "certification_registration_id"
+    t.bigint "certification_scheme_id"
+    t.bigint "certification_provider_id"
+    t.bigint "assessor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["assessor_id"], name: "idx_certification_assessments_assessor"
@@ -64,8 +67,8 @@ ActiveRecord::Schema.define(version: 20171022173325) do
   create_table "certification_registrations", force: :cascade do |t|
     t.text "registration_notes"
     t.integer "status"
-    t.integer "student_id"
-    t.integer "lsp_admin_id"
+    t.bigint "student_id"
+    t.bigint "lsp_admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["lsp_admin_id"], name: "idx_certification_registrations_lsp_admin"
@@ -85,7 +88,7 @@ ActiveRecord::Schema.define(version: 20171022173325) do
   create_table "competency_units", force: :cascade do |t|
     t.string "code"
     t.string "name"
-    t.integer "certification_scheme_id"
+    t.bigint "certification_scheme_id"
     t.integer "display_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -93,7 +96,7 @@ ActiveRecord::Schema.define(version: 20171022173325) do
   end
 
   create_table "lsp_admins", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "idx_lsp_admins_user"
@@ -103,8 +106,8 @@ ActiveRecord::Schema.define(version: 20171022173325) do
     t.integer "status"
     t.datetime "review_date"
     t.text "comment"
-    t.integer "certification_assessment_id"
-    t.integer "assessor_id"
+    t.bigint "certification_assessment_id"
+    t.bigint "assessor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["assessor_id"], name: "idx_reviews_assessor"
@@ -121,7 +124,7 @@ ActiveRecord::Schema.define(version: 20171022173325) do
 
   create_table "students", force: :cascade do |t|
     t.string "student_number"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "idx_students_user"
@@ -129,7 +132,7 @@ ActiveRecord::Schema.define(version: 20171022173325) do
 
   create_table "supporting_documents", force: :cascade do |t|
     t.string "title"
-    t.integer "certification_registration_id"
+    t.bigint "certification_registration_id"
     t.integer "document_type"
     t.text "description"
     t.string "file"
@@ -141,7 +144,7 @@ ActiveRecord::Schema.define(version: 20171022173325) do
 
   create_table "technical_committees", force: :cascade do |t|
     t.string "license_number"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "idx_technical_committees_user"
