@@ -1,32 +1,15 @@
 !!! 5
 %html
   %head
-    %title LSP Informatika
+    %title SILSPI :: LSP Informatika
     = csrf_meta_tags
     = favicon_link_tag 'favicon.png'
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     %meta{name: 'viewport', content: 'width=device-width', 'initial-scale': 1, 'shrink-to-fit': 'no'}
   %body
-    %nav.navbar.navbar-expand-lg.navbar-light.bg-light.mb-4
-      %a.navbar-brand{ href: '#'} SILSPI
-      %button.navbar-toggler{ type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarNavDropdown', 'aria-controls': 'navbarNavDropdown', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation'}
-        %span.navbar-toggler-icon
-      .collapse.navbar-collapse#navbarNavDropdown
-        %ul.navbar-nav
-          %li.nav-item.active
-            %a.nav-link{ href: '#'} Beranda
-          %li.nav-item.active
-            %a.nav-link{ href: '#'} Program Sertifikasi Anda
-          %li.nav-item.active
-            %a.nav-link{ href: '#'} Asesmen Sertifikasi
-          %li.nav-item.active
-            %a.nav-link{ href: '#'} Review Asesmen Sertifikasi
-          %li.nav-item.active.dropdown
-            %a.nav-link.dropdown-toggle#navbarDropdownMenuLink{ href: '#', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' } Manajemen Data Master
-            .dropdown-menu{ 'aria-labelledby': 'navbarDropdownMenuLink' }
-              %a.dropdown-item{ href: '/certification_schemes' } Skema Sertifikasi
-              %a.dropdown-item{ href: '/certification_providers' } Tempat Uji Kompetensi
-        .float-right
-          %button.btn.btn-outline-info Logout
+    = image_tag 'header.png'
+    %br
+    %br
     = yield
+    = image_tag 'footer.png'
